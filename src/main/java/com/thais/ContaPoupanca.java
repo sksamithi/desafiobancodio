@@ -13,4 +13,9 @@ public class ContaPoupanca extends Conta {
         System.out.println("=== Extrato Conta Poupança ===");
         super.imprimirInfosComuns();
     }
+
+    // Método adicional para verificar o saldo
+    public double getSaldo() {
+        return this.saldo;
+    }
 }

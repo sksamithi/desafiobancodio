@@ -41,6 +41,30 @@ public abstract class Conta implements InterfaceConta {
         contaDestino.depositar(valor);
     }
 
+    public void transferirPix(double valor, Conta contaDestino) {
+        if (this.saldo < valor) {
+            System.out.println("Saldo insuficiente para a transferência via PIX.");
+            return;
+        }
+        this.sacar(valor);
+        contaDestino.depositar(valor);
+        System.out.println(String.format("Transferindo via PIX o valor de: %.2f", valor));
+        System.out.println(String.format("De: %s (Agência: %d, Conta: %d)", this.cliente.getNome(), this.agencia, this.numero));
+        System.out.println(String.format("Para: %s (Agência: %d, Conta: %d)", contaDestino.getCliente().getNome(), contaDestino.getAgencia(), contaDestino.getNumero()));
+    }
+
+    public void transferirTed(double valor, Conta contaDestino) {
+        if (this.saldo < valor) {
+            System.out.println("Saldo insuficiente para a transferência via TED.");
+            return;
+        }
+        this.sacar(valor);
+        contaDestino.depositar(valor);
+        System.out.println(String.format("Transferindo via TED o valor de: %.2f", valor));
+        System.out.println(String.format("De: %s (Agência: %d, Conta: %d)", this.cliente.getNome(), this.agencia, this.numero));
+        System.out.println(String.format("Para: %s (Agência: %d, Conta: %d)", contaDestino.getCliente().getNome(), contaDestino.getAgencia(), contaDestino.getNumero()));
+    }
+
     protected void imprimirInfosComuns() {
         System.out.println(String.format("Titular: %s", this.cliente.getNome()));
         System.out.println(String.format("Agencia: %d", this.agencia));
