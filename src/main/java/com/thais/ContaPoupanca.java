@@ -14,7 +14,7 @@ public class ContaPoupanca extends Conta {
         super.imprimirInfosComuns();
     }
 
-    // Método adicional para verificar o saldo
+    @Override
     public double getSaldo() {
         return this.saldo;
     }
